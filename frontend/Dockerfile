@@ -7,11 +7,6 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-
-# Pass backend URL at build time for Vite
-ARG VITE_API_URL=https://api.tasks.laexcellence.in
-ENV VITE_API_URL=$VITE_API_URL
-
 RUN npm run build
 
 # Stage 2: Serve with Nginx
@@ -23,6 +18,11 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Copy built static files from Stage 1
 COPY --from=build /app/dist /usr/share/nginx/html
 
+# Copy runtime entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 EXPOSE 80
 
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE =
+  (typeof window !== 'undefined' && window.__ENV__ && window.__ENV__.VITE_API_URL) ||
+  import.meta.env.VITE_API_URL ||
+  'http://localhost:5000';
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
