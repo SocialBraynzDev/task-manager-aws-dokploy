@@ -8,3 +8,4 @@ EOF
 
 # Execute container CMD (start Nginx)
 exec "$@"
+
