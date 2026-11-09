@@ -80,7 +80,7 @@ export default function App() {
   return (
     <div className="container">
       <header className="header">
-        <div className="badge">🚀 AWS EC2 + Dokploy Demo — Live v2.0 (CI/CD Verified)</div>
+        <div className="badge">🚀 AWS EC2 + Dokploy Demo — Live v3.0 (CI/CD Verified)</div>
         <h1>Full-Stack Task Manager</h1>
         <p className="subtitle">
           React Frontend ↔ Express API ↔ PostgreSQL Database
